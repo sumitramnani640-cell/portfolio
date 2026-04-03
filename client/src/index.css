@@ -5,6 +5,7 @@
   --font-serif: 'Instrument Serif', serif;
   
   --bg-inner: #fdfbf7;
+  --bg-frame: #6b7d51;
   --text-dark: #1a1a1a;
   --text-teal: #087968;
   
@@ -12,6 +13,14 @@
   --accent-teal: #0c8273;
   --accent-yellow: #d89b5c;
   --accent-maroon: #3d0818;
+}
+
+[data-theme='dark'] {
+  --bg-inner: #1a1c19;
+  --bg-frame: #0d120a;
+  --text-dark: #fcfcfc;
+  --text-teal: #4adbb7;
+  --accent-coral: #fa8f82;
 }
 
 * {
