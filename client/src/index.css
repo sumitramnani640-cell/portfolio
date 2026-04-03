@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --font-family: 'Epilogue', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+  
+  --bg-inner: #fdfbf7;
+  --text-dark: #1a1a1a;
+  --text-teal: #087968;
+  
+  --accent-coral: #ed7365;
+  --accent-teal: #0c8273;
+  --accent-yellow: #d89b5c;
+  --accent-maroon: #3d0818;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-inner);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

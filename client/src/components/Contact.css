@@ -1,0 +1,120 @@
+.contact-section {
+  width: 100%;
+  background-color: var(--accent-teal);
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.contact-info {
+  flex: 1;
+  padding: 3rem 2rem 3rem 0;
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.contact-info p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.contact-details p {
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.contact-form {
+  flex: 1;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-inner);
+  color: var(--text-dark);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.form-input {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--text-dark);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 1rem;
+  background: var(--text-teal);
+  color: #fff;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.form-submit:hover {
+  opacity: 0.9;
+}
+
+.status-message {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: -0.5rem;
+}
+
+.status-message.success {
+  color: #10b981;
+}
+
+.status-message.error {
+  color: #ef4444;
+}
+
+@media (max-width: 850px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  .contact-info {
+    padding-right: 0;
+  }
+}
