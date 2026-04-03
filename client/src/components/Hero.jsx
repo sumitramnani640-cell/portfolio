@@ -8,7 +8,13 @@ const Hero = () => {
     username: '@sumitramnani',
     name: 'Sumit Ramnani',
     bio: 'A Backend Developer who excels in architecting scalable and robust server-side applications. I possess a strong engineering sensibility, focusing on database performance, API optimization, and secure infrastructure.',
-    miniCard: 'Backend Developer With A Passion For Scalable Architecture'
+    miniCard: 'Backend Developer With A Passion For Scalable Architecture',
+    stat1: '1434 DESIGNED COMPLETED',
+    stat2: '17 CLIENTS EVERY MONTH',
+    stat3: '2 BILLION LINES OF CODE WRITTEN',
+    stat4: '1200+ CLIENTS',
+    heroLine1: 'lets think',
+    heroLine2: 'creative'
   });
 
   useEffect(() => {
@@ -48,16 +54,16 @@ const Hero = () => {
             <strong>HI THERE</strong> <span className="line"></span>
           </div>
           <h1 className="hero-title">
-            lets think<br />
-             <span className="teal-text">creative</span>
+            {heroData.heroLine1}<br />
+             <span className="teal-text">{heroData.heroLine2}</span>
           </h1>
         </div>
         
         <div className="stats-chart">
-           <div className="stat-bar bar-coral">1434 DESIGNED COMPLETED</div>
-           <div className="stat-bar bar-teal">17 CLIENTS EVERY MONTH</div>
-           <div className="stat-bar bar-yellow">2 BILLION LINES OF CODE WRITTEN</div>
-           <div className="stat-bar bar-maroon">1200+ CLIENTS</div>
+           <div className="stat-bar bar-coral">{heroData.stat1}</div>
+           <div className="stat-bar bar-teal">{heroData.stat2}</div>
+           <div className="stat-bar bar-yellow">{heroData.stat3}</div>
+           <div className="stat-bar bar-maroon">{heroData.stat4}</div>
         </div>
       </div>
       

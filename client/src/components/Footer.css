@@ -1,0 +1,17 @@
+.footer-module {
+  background-color: var(--text-dark, #1a1a1a);
+  color: var(--bg-inner, #fdfbf7);
+  padding: 2rem;
+  text-align: center;
+}
+
+[data-theme='dark'] .footer-module {
+  background-color: #000;
+  color: #fff;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

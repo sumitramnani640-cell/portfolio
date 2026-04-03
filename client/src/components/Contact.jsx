@@ -1,9 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import './Contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+  const [contactData, setContactData] = useState({
+    heading: "Let's build something amazing together.",
+    subtext: "Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!",
+    email: "hello@portfolio.dev",
+    location: "San Francisco, CA"
+  });
+
+  useEffect(() => {
+    const fetchContact = async () => {
+      try {
+        const docRef = doc(db, 'content', 'contact');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setContactData(docSnap.data());
+        }
+      } catch (error) {
+        console.error("Error fetching contact data", error);
+      }
+    };
+    fetchContact();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,21 +37,13 @@ const Contact = () => {
     setStatus('submitting');
 
     try {
-      // Trying to hit the local Node.js Express server running on port 3000
-      const res = await fetch('http://localhost:3000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
+      await addDoc(collection(db, 'messages'), {
+        ...formData,
+        timestamp: serverTimestamp()
       });
-
-      if (res.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
     } catch (err) {
       console.error(err);
       setStatus('error');
@@ -39,14 +54,13 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       <div className="contact-container glass-panel">
         <div className="contact-info">
-          <h2 className="gradient-text">Let's build something amazing together.</h2>
+          <h2 className="gradient-text">{contactData.heading}</h2>
           <p>
-            Whether you have a question, a project idea, or just want to say hi,
-            I'll try my best to get back to you!
+            {contactData.subtext}
           </p>
           <div className="contact-details">
-            <p><strong>Email:</strong> hello@portfolio.dev</p>
-            <p><strong>Location:</strong> San Francisco, CA</p>
+            <p><strong>Email:</strong> {contactData.email}</p>
+            <p><strong>Location:</strong> {contactData.location}</p>
           </div>
         </div>
 

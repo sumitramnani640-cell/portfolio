@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import './Projects.css';
 
-const projectData = [
+const fallbackProjects = [
   {
     title: 'E-Commerce Platform',
     description: 'A blazing fast, modern shopping experience built with React and Node.js.',
@@ -23,6 +25,22 @@ const projectData = [
 ];
 
 const Projects = () => {
+  const [projectData, setProjectData] = useState(fallbackProjects);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const docRef = doc(db, 'content', 'projects');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists() && docSnap.data().items) {
+          setProjectData(docSnap.data().items);
+        }
+      } catch (error) {
+        console.error("Error fetching projects data from Firestore", error);
+      }
+    };
+    fetchProjects();
+  }, []);
   return (
     <section id="projects" className="projects-section">
       <h2 className="section-title gradient-text">Featured Work</h2>
